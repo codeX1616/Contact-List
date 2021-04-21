@@ -1,0 +1,22 @@
+{
+  "name": "contact-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeX1616/Contact-List.git"
+  },
+  "author": "pratik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeX1616/Contact-List/issues"
+  },
+  "homepage": "https://github.com/codeX1616/Contact-List#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
