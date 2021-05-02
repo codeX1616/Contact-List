@@ -1,10 +1,14 @@
 const express = require('express');
+const { url } = require('inspector');
 const path = require('path');
 const port = 8000;
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname, 'views'));
+
+// Adding the middleware parser using app.use method
+app.use(express.urlencoded());
 
 var contacts = [
     {
@@ -24,16 +28,17 @@ app.get('/', function(req,res){
     });
 });
 
-// Rendering a simple profile page using the get request
 app.get('/profile', function(req, res){
     res.render('profile', {
         title: "Profile"
     })
 });
 
-// Creating a post request for submitting contact details and redirecting to profile page
 app.post('/new-contact', function(req, res){
-    return res.redirect('/profile')
+
+    // Pushing the req.body (Entered name and phone number) to the contacts variable and redirecting back to the same page.
+    contacts.push(req.body);
+    return res.redirect('back')
 })
 
 app.listen(port, function(err){
