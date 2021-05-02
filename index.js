@@ -1,14 +1,21 @@
-// Importing express
 const express = require('express');
 
-// Initializing port
-const port = 8000;
+// Module to set path for view engine
+const path = require('path');
 
-// Creating object for express
+const port = 8000;
 const app = express();
 
+// Adding ejs template/view engine
+app.set('view engine', 'ejs');
+
+// Setting path to add ejs
+app.set('views',path.join(__dirname, 'views'));
+
 app.get('/', function(req,res){
-    res.send('<h1>Working!</h1>')
+
+    // res.render function renders the home.ejs file to the specified path
+    return res.render('home')
 });
 
 app.listen(port, function(err){
