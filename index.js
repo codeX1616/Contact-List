@@ -6,7 +6,6 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname, 'views'));
 
-// Creating a local variable contacts to store some dummy contacts
 var contacts = [
     {
         name: "Unkown",
@@ -19,15 +18,23 @@ var contacts = [
 ]
 
 app.get('/', function(req,res){
-
-    // Creating title variable to be used by home.ejs file when needed
     return res.render('home', {
-        
-        // Passing title and contacts as locals
         title: 'Contacts List',
         contact_list: contacts
     });
 });
+
+// Rendering a simple profile page using the get request
+app.get('/profile', function(req, res){
+    res.render('profile', {
+        title: "Profile"
+    })
+});
+
+// Creating a post request for submitting contact details and redirecting to profile page
+app.post('/new-contact', function(req, res){
+    return res.redirect('/profile')
+})
 
 app.listen(port, function(err){
     if(err){
